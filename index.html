@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>タクシーメーター</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="meter-container">
+    <header>
+      <span class="icon">🚖</span>
+      <h1>タクシーメーター</h1>
+    </header>
+
+    <div class="screen">
+      <div class="status-indicator" id="statusIndicator">空車</div>
+      <div class="label">運賃</div>
+      <div class="fare"><span id="fare">0</span>円</div>
+    </div>
+
+    <div class="buttons">
+      <button id="btnIdle" class="btn">空車</button>
+      <button id="btnActive" class="btn active">実車</button>
+      <button id="btnPay" class="btn" disabled>支払</button>
+    </div>
+
+    <footer>
+      <button class="btn surcharge" id="surchargeBtn">割増</button>
+      <div class="lights">
+        <div class="light power"></div>
+        <div class="light menu"></div>
+        <div class="port"></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
