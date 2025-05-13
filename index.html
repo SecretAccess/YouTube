@@ -1,40 +1,68 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>タクシーメーター</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>限定動画一覧</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f4;
+      padding: 2em;
+      text-align: center;
+    }
+    input {
+      padding: 0.5em;
+      font-size: 1em;
+      width: 200px;
+    }
+    button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      margin-left: 0.5em;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 1em 0;
+    }
+    .error {
+      color: red;
+      margin-top: 1em;
+    }
+  </style>
 </head>
 <body>
-  <div class="meter-container">
-    <header>
-      <span class="icon">🚖</span>
-      <h1>タクシーメーター</h1>
-    </header>
-
-    <div class="screen">
-      <div class="status-indicator" id="statusIndicator">空車</div>
-      <div class="label">運賃</div>
-      <div class="fare"><span id="fare">0</span>円</div>
-    </div>
-
-    <div class="buttons">
-      <button id="btnIdle" class="btn">空車</button>
-      <button id="btnActive" class="btn active">実車</button>
-      <button id="btnPay" class="btn" disabled>支払</button>
-    </div>
-
-    <footer>
-      <button class="btn surcharge" id="surchargeBtn">割増</button>
-      <div class="lights">
-        <div class="light power"></div>
-        <div class="light menu"></div>
-        <div class="port"></div>
-      </div>
-    </footer>
+  <div id="auth">
+    <h2>パスコードを入力</h2>
+    <input type="password" id="passcode" placeholder="パスコード">
+    <button onclick="checkPassword()">送信</button>
+    <p id="error" class="error"></p>
   </div>
 
-  <script src="script.js"></script>
+  <div id="content" style="display: none;">
+    <h1>限定公開動画リスト</h1>
+    <ul>
+      <li><a href="https://youtu.be/bM2zyqkZsG0?si=iEgtJ9zpbns2qZTW" target="_blank">動画1</a></li>
+      <li><a href="https://youtu.be/lmUVybY87wo?si=wijGNPBtLDnt-AWj" target="_blank">動画2</a></li>
+    </ul>
+    <p>チャンネル全体はこちら → <a href="https://www.youtube.com/channel/UCMeV0E1-zNYYK5LqPGLIk6g" target="_blank">YouTube チャンネル</a></p>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("passcode").value;
+      const correct = atob("c2VjcmV0MTIz"); // base64: "secret123"
+      if (input === correct) {
+        document.getElementById("auth").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      } else {
+        document.getElementById("error").textContent = "パスコードが違います";
+      }
+    }
+  </script>
 </body>
 </html>
